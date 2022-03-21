@@ -11,7 +11,7 @@ export class customersController {
         if (customers) {
             res.status(200).json('thanh cong')
         }
-        {
+        else {
             res.status(400).json('khong ton tai')
         }
 
@@ -22,7 +22,7 @@ export class customersController {
         if (customers) {
             res.status(200).json('thanh cong')
         }
-        {
+        else {
             res.status(400).json('khong ton tai')
         }
 

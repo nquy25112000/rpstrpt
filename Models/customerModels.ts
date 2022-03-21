@@ -1,5 +1,7 @@
 import { KnexRepository } from '../Repository/KnexRepository'
-const knex = require('../Config/connect')
+import { Connect } from '../Config/connect'
+const knex = new Connect().knex;
+
 
 export interface Customers {
     id: string

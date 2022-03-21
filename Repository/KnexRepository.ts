@@ -1,6 +1,6 @@
-import type { Knex } from 'knex'
 import { IRead } from './IRead';
-const knex = require('../Config/connect')
+import { Connect } from '../Config/connect'
+const knex = new Connect().knex;
 
 
 export abstract class KnexRepository<T> implements IRead<T> {
