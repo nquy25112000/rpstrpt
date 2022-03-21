@@ -1,11 +1,31 @@
+const bodyParser = require('body-parser')
 import express from 'express';
-var app = express();
-const CustomersRouter = require('./Router/customersRouter')
+import { CustomersRouter } from './Router/customersRouter';
 
+class Server {
+    public app: express.Application
+    constructor() {
+        this.app = express();
+        this.config();
+        this.router();
+        this.start();
 
+    }
 
-app.use('/customers', CustomersRouter)
+    public config(): void {
+        this.app.use(bodyParser.urlencoded({ extended: true }));
+    }
 
-app.listen(3000, () => {
-    console.log("sv dang chay")
-})
+    public router(): void {
+        this.app.use('/customers', new CustomersRouter().CustomersRouter)
+
+    }
+
+    public start(): void {
+        this.app.listen(3000, () => {
+            console.log("app dang chay tren port 3000");
+        });
+    }
+}
+
+new Server();
