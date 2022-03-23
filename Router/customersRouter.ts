@@ -20,6 +20,7 @@ export class CustomersRouter {
 
 
         this.CustomersRouter.post('/', CustomersController.create);
+        this.CustomersRouter.post('/2', CustomersController.create2);
 
 
         this.CustomersRouter.put('/:id', CustomersController.update);

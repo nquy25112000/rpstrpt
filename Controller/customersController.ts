@@ -1,4 +1,4 @@
-import { CustomersRepository } from '../Models/customerModels'
+import { Customers, CustomersRepository } from '../Models/customerModels'
 import { Request, Response, NextFunction } from 'express';
 
 const repository = new CustomersRepository()
@@ -25,7 +25,6 @@ export class customersController {
         else {
             res.status(400).json('khong ton tai')
         }
-
     }
 
 
@@ -43,6 +42,21 @@ export class customersController {
         }
         res.status(201).json({ messager: "sucsess" })
     }
+
+
+
+    public create2 = async (req: Request, res: Response, next: NextFunction) => {
+        const item = req.body
+        const product = new Customers(item).save();
+
+        if (!product) {
+            res.status(500)
+        }
+        res.status(201).json({ messager: "sucsess" })
+    }
+
+
+
 
     public update = async (req: Request, res: Response, next: NextFunction) => {
         const id = req.params.id
